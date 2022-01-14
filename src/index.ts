@@ -1,16 +1,13 @@
-import express, { Request, Response } from "express";
+import express from 'express';
+import {router} from './routes/loginRoutes';
+import cookieSession from 'cookie-session';
 
 const app = express();
 
-app.get("/", (req: Request, res: Response) => {
-  res.send(`
-        <div>
-            <h1>Hey There!</h1>
-            <h1>Hey There!</h1>
-        </div>
-    `);
-});
+app.use(express.urlencoded({extended: true}));
+app.use(cookieSession({keys: ['dfgwetrvbrtbed']}));
+app.use(router);
 
 app.listen(3000, () => {
-  console.log('Listening on port 3000');
-})
+    console.log('Listening on port 3000');
+});
