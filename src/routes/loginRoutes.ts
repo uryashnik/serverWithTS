@@ -47,7 +47,7 @@ router.post('/login', (req: RequestWithBody, res: Response) => {
     }
 });
 
-router.get('/', (req: RequestWithBody, res: Response) => {
+router.get('/', (req: Request, res: Response) => {
     if (req.session && req.session.loggedIn) {
         res.send(`
             <div>
@@ -65,7 +65,7 @@ router.get('/', (req: RequestWithBody, res: Response) => {
     }
 });
 
-router.get('/logout', (req: RequestWithBody, res: Response) => {
+router.get('/logout', (req: Request, res: Response) => {
     req.session = undefined;
     res.redirect('/');
 });
